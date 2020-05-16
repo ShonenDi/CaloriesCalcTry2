@@ -17,10 +17,15 @@ public class Users extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
+        setTitle(R.string.user_screen_title);
+
+        btnAddNewUser = findViewById(R.id.btnAddNewUser);
+        btnAddNewUser.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View v) {
-
+    public void onClick(View view) {
+        if(view.getId()==R.id.btnAddNewUser){
+        }
     }
 }

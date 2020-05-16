@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">CaloriesCalculatorApp</string>
     <string name="add_user_btn">Add new user</string>
+    <string name="user_screen_title">Welcome to calories calculator</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_new_user_name_hint">Please enter new user name</string>
 </resources>

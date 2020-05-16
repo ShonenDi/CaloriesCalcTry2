@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AddNewUserTxt">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#e6b3ff</item>
+        <item name="android:textColorHint">#aa80ff</item>
+    </style>
+
+
 </resources>
