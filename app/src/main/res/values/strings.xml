@@ -6,4 +6,21 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_new_user_name_hint">Please enter new user name</string>
+    <string name="add_new_user_age_hint">Please enter your age</string>
+    <string name="add_new_user_female_gender">Female</string>
+    <string name="add_new_user_male_gender">Male</string>
+    <string name="add_new_user_gender">Please select your gender</string>
+    <string name="add_new_user_height_hint">Please select your height</string>
+    <string name="add_new_user_weight_hint">Please select your weight</string>
+    <string name="add_new_user_spinner_hint">Please select your activity level</string>
+    <string name="add_new_user_save_btn">Save</string>
+    <string name="add_new_user_cancel_btn">Cancel</string>
+
+    <string-array name="activity_levels">
+        <item>1.2 - Minimum activity level</item>
+        <item>1.375 - Low activity level</item>
+        <item>1.55 - Average activity level</item>
+        <item>1.725 - High activity level</item>
+        <item>1.9 - Very high activity level</item>
+    </string-array>
 </resources>

@@ -10,8 +10,16 @@
 
     <style name="AddNewUserTxt">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">#e6b3ff</item>
-        <item name="android:textColorHint">#aa80ff</item>
+        <item name="android:textColor">#4B0082</item>
+        <item name="android:textColorHint">#F08080</item>
+    </style>
+
+    <style name="AddNewUserButtons">
+        <item name="android:textColor">#4B0082</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:background">#90EE90</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:ellipsize">marquee</item>
     </style>
 
 
