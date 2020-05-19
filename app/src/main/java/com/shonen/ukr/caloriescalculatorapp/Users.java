@@ -11,7 +11,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class Users extends AppCompatActivity implements View.OnClickListener {
-    private ArrayList<User> listOfUsers;
+    private ArrayList<User> listOfUsers = new ArrayList<>();
     private ListView viewListOfUsers;
     private Button btnAddNewUser;
     @Override
@@ -29,7 +29,7 @@ public class Users extends AppCompatActivity implements View.OnClickListener {
             Bundle arguments = getIntent().getExtras();
             final User newUser;
             newUser = (User) arguments.getSerializable(User.class.getSimpleName());
-            userInfoAdapter.add(new User(newUser.getUserName(),newUser.getUserAge(),newUser.getUserHeight(),newUser.getUserWeight(),
+            listOfUsers.add(new User(newUser.getUserName(),newUser.getUserAge(),newUser.getUserHeight(),newUser.getUserWeight(),
                     newUser.getUserActivityCoef(),newUser.getCaloriesPerDay()));
             userInfoAdapter.notifyDataSetChanged();
 

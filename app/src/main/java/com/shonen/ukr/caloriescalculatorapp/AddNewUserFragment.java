@@ -22,7 +22,7 @@ public class AddNewUserFragment extends Fragment  {
     private Button btnSave, btnCancel;
     private boolean female = false;
     private boolean male = false;
-    private double actCoef;
+    private Double actCoef;
 
     public AddNewUserFragment() {
         // Required empty public constructor
@@ -38,7 +38,11 @@ public class AddNewUserFragment extends Fragment  {
         edtNewUserHeight = view.findViewById(R.id.edtNewUserHeight);
         edtNewUserWeight = view.findViewById(R.id.edtNewUserWeight);
         spinner = view.findViewById(R.id.spinner);
-        actCoef = Double.valueOf(spinner.getSelectedItem().toString());
+        try {
+            actCoef = Double.valueOf(spinner.getSelectedItem().toString());
+        }catch (NumberFormatException e){
+            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
         RadioGroup userGenderSelect = view.findViewById(R.id.addNewUserGender);
         userGenderSelect.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
