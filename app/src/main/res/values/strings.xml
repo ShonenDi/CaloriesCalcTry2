@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CaloriesCalculatorApp</string>
+    <string name="app_name">Calories Calculator</string>
     <string name="add_user_btn">Add new user</string>
     <string name="user_screen_title">Welcome to calories calculator</string>
 
@@ -15,6 +15,11 @@
     <string name="add_new_user_spinner_hint">Please select your activity level</string>
     <string name="add_new_user_save_btn">Save</string>
     <string name="add_new_user_cancel_btn">Cancel</string>
+    <string name="add_new_user_title">Please enter your information</string>
+
+    <string name="user_info_weight">Your weight: </string>
+    <string name="user_info_height">Your height: </string>
+    <string name="user_info_cal_per_day">Yor calories per day:</string>
 
     <string-array name="activity_levels">
         <item>1.2 - Minimum activity level</item>

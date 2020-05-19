@@ -9,6 +9,7 @@ public class AddNewUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_user);
+        setTitle(R.string.add_new_user_title);
         getSupportFragmentManager().beginTransaction().replace(R.id.add_user_layout,new AddNewUserFragment()).commit();
     }
 }

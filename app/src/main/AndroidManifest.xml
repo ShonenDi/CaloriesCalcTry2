@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity android:name=".AddNewUser" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.shonen.ukr.caloriescalculatorapp.Users" />
         </activity>
         <activity android:name=".Users" >
             <intent-filter>

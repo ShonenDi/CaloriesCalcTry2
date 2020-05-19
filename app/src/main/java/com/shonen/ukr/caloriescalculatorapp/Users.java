@@ -19,9 +19,23 @@ public class Users extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
         setTitle(R.string.user_screen_title);
-
+        UserInfoAdapter userInfoAdapter = new UserInfoAdapter(Users.this,listOfUsers);
+        viewListOfUsers = findViewById(R.id.userListView);
+        viewListOfUsers.setAdapter(userInfoAdapter);
         btnAddNewUser = findViewById(R.id.btnAddNewUser);
         btnAddNewUser.setOnClickListener(this);
+
+        try {
+            Bundle arguments = getIntent().getExtras();
+            final User newUser;
+            newUser = (User) arguments.getSerializable(User.class.getSimpleName());
+            userInfoAdapter.add(new User(newUser.getUserName(),newUser.getUserAge(),newUser.getUserHeight(),newUser.getUserWeight(),
+                    newUser.getUserActivityCoef(),newUser.getCaloriesPerDay()));
+            userInfoAdapter.notifyDataSetChanged();
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

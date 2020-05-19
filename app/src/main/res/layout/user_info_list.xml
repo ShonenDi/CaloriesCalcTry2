@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/linearLayoutUserInfo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/genderIMG"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_weight="0"
+            tools:srcCompat="@drawable/ic_tag_faces_black_24dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtUserNameInfo"
+                style="@style/AddNewUserTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                tools:text="name" />
+
+            <TextView
+                android:id="@+id/txtUserInfoCoef"
+                style="@style/AddNewUserTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                tools:text="111" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_weight="4">
+
+            <TableRow
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/AddNewUserTxt"
+                    android:layout_weight="2"
+                    android:text="@string/user_info_weight" />
+
+                <TextView
+                    android:id="@+id/txtUserInfoWeight"
+                    style="@style/AddNewUserTxt"
+                    android:layout_weight="1"
+                    tools:text="100" />
+            </TableRow>
+
+            <TableRow
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/AddNewUserTxt"
+                    android:layout_weight="2"
+                    android:text="@string/user_info_height" />
+
+                <TextView
+                    android:id="@+id/txtUserInfoHeight"
+                    style="@style/AddNewUserTxt"
+                    android:layout_weight="1"
+                    tools:text="200" />
+            </TableRow>
+        </TableLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:gravity="center_horizontal"
+            style="@style/AddNewUserTxt"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_info_cal_per_day" />
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:id="@+id/txtUserInfoCalPerDay"
+            style="@style/AddNewUserTxt"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="12222"/>
+    </LinearLayout>
+</LinearLayout>
+
