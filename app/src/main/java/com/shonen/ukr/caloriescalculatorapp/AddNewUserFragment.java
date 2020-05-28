@@ -15,6 +15,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class AddNewUserFragment extends Fragment  {
     private EditText edtNewUseName, edtNewUserAge, edtNewUserHeight, edtNewUserWeight;
@@ -23,6 +25,7 @@ public class AddNewUserFragment extends Fragment  {
     private boolean female = false;
     private boolean male = false;
     private Double actCoef;
+    private ArrayList<User> addNewUser = new ArrayList<User>();
 
     public AddNewUserFragment() {
         // Required empty public constructor
@@ -66,8 +69,10 @@ public class AddNewUserFragment extends Fragment  {
             public void onClick(View v) {
                 try {
                     User newUser = new User(edtNewUseName.getText().toString(), Integer.valueOf(edtNewUserAge.getText().toString()),
-                            Double.valueOf(edtNewUserHeight.getText().toString()), Double.valueOf(edtNewUserWeight.getText().toString()), actCoef, calcCaloriesPerDay()
-                    );
+                            Double.valueOf(edtNewUserHeight.getText().toString()), Double.valueOf(edtNewUserWeight.getText().toString()), actCoef, calcCaloriesPerDay());
+
+                    Toast.makeText(getContext(),newUser.getUserName().toString() + " \n" + newUser.getUserActivityCoef() + "\n" + newUser.getUserWeight()
+                            + " \n" + newUser.getUserHeight()+ " \n" + newUser.getCaloriesPerDay(),Toast.LENGTH_LONG).show();
                     if (male) {
                         newUser.setGenderMale(true);
                     } else if (female) {

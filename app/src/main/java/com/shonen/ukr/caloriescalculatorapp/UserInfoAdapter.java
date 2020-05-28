@@ -26,17 +26,16 @@ public class UserInfoAdapter extends ArrayAdapter<User> {
                 listItem = LayoutInflater.from(getContext()).inflate(R.layout.user_info_list,parent,false);
             }
             User customUser = getItem(position);
-        ImageView gendImage = listItem.findViewById(R.id.genderIMG);
         TextView userName = listItem.findViewById(R.id.txtUserNameInfo);
         userName.setText(customUser.getUserName());
         TextView userActivityCoef = listItem.findViewById(R.id.txtUserInfoCoef);
         userActivityCoef.setText(String.valueOf(customUser.getUserActivityCoef()));
         TextView userWeight = listItem.findViewById(R.id.txtUserInfoWeight);
-        userActivityCoef.setText(String.valueOf(customUser.getUserWeight()));
+        userWeight.setText(String.valueOf(customUser.getUserWeight()));
         TextView userHeight = listItem.findViewById(R.id.txtUserInfoHeight);
-        userActivityCoef.setText(String.valueOf(customUser.getUserHeight()));
+        userHeight.setText(String.valueOf(customUser.getUserHeight()));
         TextView userCaloriesPerDay = listItem.findViewById(R.id.txtUserInfoCalPerDay);
-        userActivityCoef.setText(String.valueOf(customUser.getCaloriesPerDay()));
+        userCaloriesPerDay.setText(String.valueOf(customUser.getCaloriesPerDay()));
         return listItem;
     }
 }

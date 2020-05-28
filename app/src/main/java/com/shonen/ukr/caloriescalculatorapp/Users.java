@@ -1,27 +1,32 @@
 package com.shonen.ukr.caloriescalculatorapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Users extends AppCompatActivity implements View.OnClickListener {
     private ArrayList<User> listOfUsers = new ArrayList<>();
     private ListView viewListOfUsers;
     private Button btnAddNewUser;
+    private UserInfoAdapter userInfoAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
         setTitle(R.string.user_screen_title);
-        UserInfoAdapter userInfoAdapter = new UserInfoAdapter(Users.this,listOfUsers);
+        userInfoAdapter = new UserInfoAdapter(Users.this,listOfUsers);
         viewListOfUsers = findViewById(R.id.userListView);
         viewListOfUsers.setAdapter(userInfoAdapter);
+
         btnAddNewUser = findViewById(R.id.btnAddNewUser);
         btnAddNewUser.setOnClickListener(this);
 
@@ -36,6 +41,20 @@ public class Users extends AppCompatActivity implements View.OnClickListener {
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        outState.putSerializable("users",listOfUsers);
+            super.onSaveInstanceState(outState, outPersistentState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle state) {
+        super.onRestoreInstanceState(state);
+        this.listOfUsers.clear();
+        this.listOfUsers.addAll((ArrayList<User>) state.getSerializable("users"));
+        this.userInfoAdapter.notifyDataSetChanged();
     }
 
     @Override

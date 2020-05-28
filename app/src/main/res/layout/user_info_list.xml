@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/linearLayoutUserInfo">
+    android:id="@+id/linearLayoutUserInfo"
+    android:background="#c2d4dd">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,6 +16,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_weight="0"
+            android:src="@drawable/ic_tag_faces_black_24dp"
             tools:srcCompat="@drawable/ic_tag_faces_black_24dp" />
 
         <LinearLayout

@@ -22,10 +22,17 @@
     <string name="user_info_cal_per_day">Yor calories per day:</string>
 
     <string-array name="activity_levels">
-        <item>1.2 </item>
-        <item>1.375 </item>
-        <item>1.55</item>
-        <item>1.725 </item>
-        <item>1.9 </item>
+        <item>1.2</item>
+        <item>1.375</item>
+        <item>1.55 </item>
+        <item>1.725</item>
+        <item>1.9</item>
+    </string-array>
+    <string-array name="activity_levels_info">
+        <item>1.2 - Minimum activity level</item>
+        <item>1.375 - Low activity level</item>
+        <item>1.55 - Average activity level</item>
+        <item>1.725 - High activity level</item>
+        <item>1.9 - Very high activity level</item>
     </string-array>
 </resources>
