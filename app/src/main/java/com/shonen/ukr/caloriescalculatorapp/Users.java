@@ -44,10 +44,15 @@ public class Users extends AppCompatActivity implements View.OnClickListener {
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
         outState.putSerializable("users",listOfUsers);
-            super.onSaveInstanceState(outState, outPersistentState);
     }
+    //    @Override
+//    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+//        outState.putSerializable("users",listOfUsers);
+//            super.onSaveInstanceState(outState, outPersistentState);
+//    }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle state) {
