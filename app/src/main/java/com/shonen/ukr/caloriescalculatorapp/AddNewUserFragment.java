@@ -46,19 +46,6 @@ public class AddNewUserFragment extends Fragment {
         edtNewUserHeight = view.findViewById(R.id.edtNewUserHeight);
         edtNewUserWeight = view.findViewById(R.id.edtNewUserWeight);
         spinner = view.findViewById(R.id.spinner);
-
-
-        final String username = edtNewUseName.getText().toString();
-
-
-        try {
-            actCoef = Double.valueOf(spinner.getSelectedItem().toString());
-            userAge = Integer.parseInt(edtNewUserAge.getText().toString());
-            userHeight = Double.valueOf(edtNewUserHeight.getText().toString());
-            userWeight = Double.valueOf(edtNewUserWeight.getText().toString());
-        } catch (NumberFormatException e) {
-            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-        }
         RadioGroup userGenderSelect = view.findViewById(R.id.addNewUserGender);
         userGenderSelect.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -85,6 +72,13 @@ public class AddNewUserFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+            try {
+                final String username = edtNewUseName.getText().toString();
+                actCoef = Double.valueOf(spinner.getSelectedItem().toString());
+                userAge = Integer.parseInt(edtNewUserAge.getText().toString());
+                userHeight = Double.valueOf(edtNewUserHeight.getText().toString());
+                userWeight = Double.valueOf(edtNewUserWeight.getText().toString());
+
                 contentValues.put(UserDbHelper.COLUMN_NAME, username);
                 contentValues.put(UserDbHelper.COLUMN_AGE, userAge);
                 if (female) {
@@ -98,6 +92,9 @@ public class AddNewUserFragment extends Fragment {
                 contentValues.put(UserDbHelper.COLUMN_CALORIES_PER_DAY, calcCaloriesPerDay());
 
                 database.insert(UserDbHelper.TABLE_NAME, null, contentValues);
+            } catch (NumberFormatException e) {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            }
 
                 Intent intent = new Intent(getContext(),Users.class);
                 startActivity(intent);
