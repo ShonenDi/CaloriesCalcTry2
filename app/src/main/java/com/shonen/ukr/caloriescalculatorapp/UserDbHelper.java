@@ -27,12 +27,17 @@ public class UserDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL("CREATE TABLE " + TABLE_NAME + "(" + COLUMN_ID + "  INTEGER PRIMARY KEY,"
+                        + COLUMN_NAME + " TEXT," + COLUMN_AGE + " INTEGER," +
+                COLUMN_GENDER + " TEXT," + COLUMN_HEIGHT + " REAL," +
+                COLUMN_WEIGHT + " REAL," + COLUMN_ACTIVITY + " REAL," +
+                COLUMN_CALORIES_PER_DAY + " REAL )" );
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
     }
 }

@@ -1,6 +1,8 @@
 package com.shonen.ukr.caloriescalculatorapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -33,7 +35,7 @@ public class AddNewUserFragment extends Fragment  {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_new_user, container, false);
         edtNewUseName = view.findViewById(R.id.edtNewUserName);
@@ -41,6 +43,13 @@ public class AddNewUserFragment extends Fragment  {
         edtNewUserHeight = view.findViewById(R.id.edtNewUserHeight);
         edtNewUserWeight = view.findViewById(R.id.edtNewUserWeight);
         spinner = view.findViewById(R.id.spinner);
+
+
+        final String username = edtNewUseName.getText().toString();
+        final int userAge = Integer.parseInt(edtNewUserAge.getText().toString());
+        final double userHeight = Double.parseDouble(edtNewUserHeight.getText().toString());
+        final double userWeight = Double.parseDouble(edtNewUserWeight.getText().toString());
+
         try {
             actCoef = Double.valueOf(spinner.getSelectedItem().toString());
         }catch (NumberFormatException e){
@@ -64,34 +73,29 @@ public class AddNewUserFragment extends Fragment  {
         btnSave = view.findViewById(R.id.add_new_user_save_btn);
         btnCancel = view.findViewById(R.id.add_new_user_calcel_btn);
 
+        final UserDbHelper userDbHelper = new UserDbHelper(getContext());
+        final SQLiteDatabase database = userDbHelper.getWritableDatabase();
+        final ContentValues contentValues = new ContentValues();
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    User newUser = new User(edtNewUseName.getText().toString(), Integer.valueOf(edtNewUserAge.getText().toString()),
-                            Double.valueOf(edtNewUserHeight.getText().toString()), Double.valueOf(edtNewUserWeight.getText().toString()), actCoef, calcCaloriesPerDay());
 
-                    Toast.makeText(getContext(),newUser.getUserName().toString() + " \n" + newUser.getUserActivityCoef() + "\n" + newUser.getUserWeight()
-                            + " \n" + newUser.getUserHeight()+ " \n" + newUser.getCaloriesPerDay(),Toast.LENGTH_LONG).show();
-                    if (male) {
-                        newUser.setGenderMale(true);
-                    } else if (female) {
-                        newUser.setGenderFemale(true);
-                    }
-                    newUser.setUserActivityCoef(actCoef);
-                    Intent intent = new Intent(getContext(),Users.class);
-                    intent.putExtra(User.class.getSimpleName(),newUser);
-                    startActivity(intent);
-                } catch (NumberFormatException e) {
-                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+             contentValues.put(UserDbHelper.COLUMN_NAME,username);
+             contentValues.put(UserDbHelper.COLUMN_AGE,userAge);
+             if(female) {
+                 contentValues.put(UserDbHelper.COLUMN_GENDER, "Female");
+             }else if (male){
+                 contentValues.put(UserDbHelper.COLUMN_GENDER, "Male");
+             }
+             contentValues.put(UserDbHelper.COLUMN_HEIGHT,userHeight);
+             contentValues.put(UserDbHelper.COLUMN_WEIGHT,userWeight);
+             contentValues.put(UserDbHelper.COLUMN_ACTIVITY,actCoef);
+             contentValues.put(UserDbHelper.COLUMN_CALORIES_PER_DAY,calcCaloriesPerDay());
 
-                } catch (IllegalArgumentException e) {
-                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                } catch (Exception e) {
-                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-
+             database.insert(UserDbHelper.TABLE_NAME,null,contentValues);
             }
+//
         });
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
