@@ -20,7 +20,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 
-public class AddNewUserFragment extends Fragment  {
+public class AddNewUserFragment extends Fragment {
     private EditText edtNewUseName, edtNewUserAge, edtNewUserHeight, edtNewUserWeight;
     private Spinner spinner;
     private Button btnSave, btnCancel;
@@ -28,6 +28,9 @@ public class AddNewUserFragment extends Fragment  {
     private boolean male = false;
     private Double actCoef;
     private ArrayList<User> addNewUser = new ArrayList<User>();
+    int userAge;
+    double userHeight;
+    double userWeight;
 
     public AddNewUserFragment() {
         // Required empty public constructor
@@ -46,13 +49,14 @@ public class AddNewUserFragment extends Fragment  {
 
 
         final String username = edtNewUseName.getText().toString();
-        final int userAge = Integer.parseInt(edtNewUserAge.getText().toString());
-        final double userHeight = Double.parseDouble(edtNewUserHeight.getText().toString());
-        final double userWeight = Double.parseDouble(edtNewUserWeight.getText().toString());
+
 
         try {
             actCoef = Double.valueOf(spinner.getSelectedItem().toString());
-        }catch (NumberFormatException e){
+            userAge = Integer.parseInt(edtNewUserAge.getText().toString());
+            userHeight = Double.valueOf(edtNewUserHeight.getText().toString());
+            userWeight = Double.valueOf(edtNewUserWeight.getText().toString());
+        } catch (NumberFormatException e) {
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
         RadioGroup userGenderSelect = view.findViewById(R.id.addNewUserGender);
@@ -81,19 +85,22 @@ public class AddNewUserFragment extends Fragment  {
             @Override
             public void onClick(View v) {
 
-             contentValues.put(UserDbHelper.COLUMN_NAME,username);
-             contentValues.put(UserDbHelper.COLUMN_AGE,userAge);
-             if(female) {
-                 contentValues.put(UserDbHelper.COLUMN_GENDER, "Female");
-             }else if (male){
-                 contentValues.put(UserDbHelper.COLUMN_GENDER, "Male");
-             }
-             contentValues.put(UserDbHelper.COLUMN_HEIGHT,userHeight);
-             contentValues.put(UserDbHelper.COLUMN_WEIGHT,userWeight);
-             contentValues.put(UserDbHelper.COLUMN_ACTIVITY,actCoef);
-             contentValues.put(UserDbHelper.COLUMN_CALORIES_PER_DAY,calcCaloriesPerDay());
+                contentValues.put(UserDbHelper.COLUMN_NAME, username);
+                contentValues.put(UserDbHelper.COLUMN_AGE, userAge);
+                if (female) {
+                    contentValues.put(UserDbHelper.COLUMN_GENDER, "Female");
+                } else if (male) {
+                    contentValues.put(UserDbHelper.COLUMN_GENDER, "Male");
+                }
+                contentValues.put(UserDbHelper.COLUMN_HEIGHT, userHeight);
+                contentValues.put(UserDbHelper.COLUMN_WEIGHT, userWeight);
+                contentValues.put(UserDbHelper.COLUMN_ACTIVITY, actCoef);
+                contentValues.put(UserDbHelper.COLUMN_CALORIES_PER_DAY, calcCaloriesPerDay());
 
-             database.insert(UserDbHelper.TABLE_NAME,null,contentValues);
+                database.insert(UserDbHelper.TABLE_NAME, null, contentValues);
+
+                Intent intent = new Intent(getContext(),Users.class);
+                startActivity(intent);
             }
 //
         });
@@ -101,7 +108,7 @@ public class AddNewUserFragment extends Fragment  {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(),Users.class);
+                Intent intent = new Intent(getContext(), Users.class);
                 startActivity(intent);
             }
         });
